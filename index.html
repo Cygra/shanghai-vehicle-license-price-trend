@@ -1,22 +1,122 @@
 <!DOCTYPE html>
-<html lang="en" style="height: 100%">
+<html lang="zh-CN" style="height: 100%">
 
 <head>
   <meta charset="utf-8">
-  <title>沪牌拍卖价格走势</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>沪牌拍卖价格走势图 - 上海车牌拍卖历史数据分析</title>
+  <meta name="description" content="查看上海车牌拍卖价格走势图，包含2002年至今的沪牌拍卖最低成交价、平均成交价、投放数量、投标人数等详细数据。了解沪牌价格变化趋势和市场动态。">
+  <meta name="keywords" content="沪牌拍卖,上海车牌,沪牌价格,车牌拍卖价格,沪牌走势图,上海车牌拍卖,沪牌历史数据,车牌拍卖数据">
+  <meta name="author" content="沪牌数据分析">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="">
+  <meta property="og:title" content="沪牌拍卖价格走势图 - 上海车牌拍卖历史数据分析">
+  <meta property="og:description" content="查看上海车牌拍卖价格走势图，包含2002年至今的沪牌拍卖最低成交价、平均成交价、投放数量、投标人数等详细数据。">
+  <meta property="og:image" content="">
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="">
+  <meta property="twitter:title" content="沪牌拍卖价格走势图 - 上海车牌拍卖历史数据分析">
+  <meta property="twitter:description" content="查看上海车牌拍卖价格走势图，包含2002年至今的沪牌拍卖最低成交价、平均成交价、投放数量、投标人数等详细数据。">
+  <meta property="twitter:image" content="">
+  
+  <!-- 结构化数据 -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "沪牌拍卖价格走势图",
+    "description": "上海车牌拍卖历史数据分析，包含2002年至今的详细拍卖数据",
+    "mainEntity": {
+      "@type": "Dataset",
+      "name": "沪牌拍卖价格数据",
+      "description": "上海车牌拍卖历史数据，包含拍牌时间、投放数量、最低成交价、平均成交价、投标人数等信息",
+      "temporalCoverage": "2002-01/2025-08",
+      "spatialCoverage": "上海市",
+      "keywords": ["沪牌拍卖", "上海车牌", "车牌价格", "拍卖数据"]
+    }
+  }
+  </script>
+  
+  <link rel="canonical" href="">
+  
+  <!-- 预加载关键资源 -->
+  <link rel="preload" href="https://fastly.jsdelivr.net/npm/echarts@5/dist/echarts.min.js" as="script">
+  
+  <!-- 页面性能优化 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="format-detection" content="telephone=no">
+  
+  <!-- 移动端优化 -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
 </head>
 
 <body style="height: 100%; margin: 0">
-  <div id="container" style="height: 100%"></div>
+  <!-- 页面头部信息 -->
+  <header style="position: absolute; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(255,255,255,0.9); padding: 10px 20px; backdrop-filter: blur(10px);">
+    <h1 style="margin: 0; font-size: 18px; color: #333;">沪牌拍卖价格走势图</h1>
+    <p style="margin: 5px 0 0 0; font-size: 14px; color: #666;">上海车牌拍卖历史数据分析 (2002年-2025年)</p>
+  </header>
+  
+  <!-- 图表容器 -->
+  <div id="container" style="height: 100%">
+    <!-- 加载状态指示器 -->
+    <div id="loading" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; z-index: 100;">
+      <div style="width: 40px; height: 40px; border: 4px solid #f3f3f3; border-top: 4px solid #3498db; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 10px;"></div>
+      <p style="color: #666; margin: 0;">正在加载沪牌拍卖数据...</p>
+    </div>
+  </div>
+  
+  <!-- 加载动画样式 -->
+  <style>
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+  
+  <!-- 页面底部信息 -->
+  <footer style="position: absolute; bottom: 0; left: 0; right: 0; z-index: 1000; background: rgba(255,255,255,0.9); padding: 10px 20px; backdrop-filter: blur(10px); text-align: center;">
+    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+      <div style="text-align: left; flex: 1;">
+        <p style="margin: 0; font-size: 12px; color: #666;">
+          <strong>数据来源：</strong>上海国拍 <a href="https://www.alltobid.com/contents/16/71.html" target="_blank">https://www.alltobid.com/contents/16/71.html</a><br>
+          <strong>数据范围：</strong>2002年1月 - 2025年8月<br>
+          <strong>数据项目：</strong>拍牌时间、投放数量、最低成交价、平均成交价、投标人数
+        </p>
+      </div>
+      <div style="text-align: right; flex: 1;">
+        <p style="margin: 0; font-size: 12px; color: #666;">
+          <strong>最新数据：</strong>2025年8月<br>
+          <strong>数据总量：</strong>284期拍卖记录<br>
+          <strong>价格区间：</strong>100元 - 94,500元
+        </p>
+      </div>
+    </div>
+  </footer>
+
   <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
 
 
   <script type="text/javascript">
-    var dom = document.getElementById('container');
-    var myChart = echarts.init(dom, null, {
-      renderer: 'canvas',
-      useDirtyRect: false
+    // 页面加载优化
+    document.addEventListener('DOMContentLoaded', function() {
+      // 延迟加载图表，提升页面加载速度
+      setTimeout(initChart, 100);
     });
+
+    function initChart() {
+      var dom = document.getElementById('container');
+      var myChart = echarts.init(dom, null, {
+        renderer: 'canvas',
+        useDirtyRect: false
+      });
     // 拍牌时间	投放数量	最低成交价	平均成交价	最低成交价格截至时间	投标人数
     var data = [
       [
@@ -2293,30 +2393,139 @@
     // 投标人数
 
     myChart.setOption({
+      title: {
+        text: '沪牌拍卖价格走势图',
+        subtext: '上海车牌拍卖历史数据分析 (2002年-2025年)',
+        left: 'center',
+        top: 10,
+        textStyle: {
+          fontSize: 18,
+          fontWeight: 'bold'
+        },
+        subtextStyle: {
+          fontSize: 12
+        }
+      },
+      tooltip: {
+        trigger: 'axis',
+        formatter: function(params) {
+          var dataIndex = params[0].dataIndex;
+          var item = data[dataIndex];
+          return `
+            <div style="padding: 8px;">
+              <h4 style="margin: 0 0 8px 0; color: #333;">${item[0]} 拍卖数据</h4>
+              <p style="margin: 4px 0;"><strong>投放数量:</strong> ${item[1]} 张</p>
+              <p style="margin: 4px 0;"><strong>最低成交价:</strong> ${item[2]} 元</p>
+              <p style="margin: 4px 0;"><strong>平均成交价:</strong> ${item[3]} 元</p>
+              <p style="margin: 4px 0;"><strong>投标人数:</strong> ${item[5]} 人</p>
+              ${item[4] ? `<p style="margin: 4px 0;"><strong>成交时间:</strong> ${item[4]}</p>` : ''}
+            </div>
+          `;
+        }
+      },
+      legend: {
+        data: ['平均成交价', '最低成交价', '投放数量', '投标人数'],
+        top: 50
+      },
+      grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '15%',
+        top: '15%',
+        containLabel: true
+      },
       xAxis: {
         type: 'category',
-        data: data.map(item => item[0])
+        data: data.map(item => item[0]),
+        axisLabel: {
+          rotate: 45,
+          fontSize: 10
+        }
       },
-      yAxis: {
-        type: 'value'
-      },
-      series: [
+      yAxis: [
         {
-          data: data.map(item => item[3]),
-          type: 'line'
+          type: 'value',
+          name: '价格 (元)',
+          position: 'left',
+          axisLabel: {
+            formatter: '{value}'
+          }
+        },
+        {
+          type: 'value',
+          name: '数量/人数',
+          position: 'right',
+          axisLabel: {
+            formatter: '{value}'
+          }
         }
       ],
-      tooltip: {
-        trigger: 'axis'
-      },
+      series: [
+        {
+          name: '平均成交价',
+          type: 'line',
+          data: data.map(item => item[3]),
+          yAxisIndex: 0,
+          smooth: true,
+          lineStyle: {
+            width: 3,
+            color: '#5470c6'
+          },
+          itemStyle: {
+            color: '#5470c6'
+          }
+        },
+        {
+          name: '最低成交价',
+          type: 'line',
+          data: data.map(item => item[2]),
+          yAxisIndex: 0,
+          smooth: true,
+          lineStyle: {
+            width: 2,
+            color: '#91cc75'
+          },
+          itemStyle: {
+            color: '#91cc75'
+          }
+        },
+        {
+          name: '投放数量',
+          type: 'bar',
+          data: data.map(item => item[1]),
+          yAxisIndex: 1,
+          opacity: 0.3,
+          color: '#fac858'
+        },
+        {
+          name: '投标人数',
+          type: 'line',
+          data: data.map(item => item[5]),
+          yAxisIndex: 1,
+          smooth: true,
+          lineStyle: {
+            width: 2,
+            color: '#ee6666',
+            type: 'dashed'
+          },
+          itemStyle: {
+            color: '#ee6666'
+          }
+        }
+      ],
       toolbox: {
         feature: {
           dataZoom: {
             yAxisIndex: 'none'
           },
           restore: {},
-          saveAsImage: {}
-        }
+          saveAsImage: {},
+          dataView: {
+            readOnly: false
+          }
+        },
+        top: 50,
+        right: 20
       },
       dataZoom: [
         {
@@ -2326,12 +2535,20 @@
         },
         {
           start: 0,
-          end: 100
+          end: 100,
+          bottom: 10
         }
-      ],
+      ]
     });
 
-    window.addEventListener('resize', myChart.resize);
+      window.addEventListener('resize', myChart.resize);
+      
+      // 隐藏加载状态
+      var loadingElement = document.getElementById('loading');
+      if (loadingElement) {
+        loadingElement.style.display = 'none';
+      }
+    } // 闭合 initChart 函数
   </script>
 </body>
 
