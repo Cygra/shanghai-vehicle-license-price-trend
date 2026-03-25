@@ -2624,11 +2624,13 @@
           formatter: function (params) {
             var dataIndex = params[0].dataIndex;
             var item = data[dataIndex];
+            var bidderSupplyRatio = (Number(item[5]) / Number(item[1])).toFixed(2);
             return `
               <div style="padding: 8px;">
                 <h4 style="margin: 0 0 8px 0; color: #333;">${item[0]} 拍卖数据</h4>
                 <p style="margin: 4px 0;"><strong>投放数量：</strong> ${item[1]} 张</p>
                 <p style="margin: 4px 0;"><strong>投标人数：</strong> ${item[5]} 人</p>
+                <p style="margin: 4px 0;"><strong>投标人数/投放数量：</strong> ${bidderSupplyRatio}</p>
                 <p style="margin: 4px 0;"><strong>最低成交价：</strong> ${item[2]} 元</p>
                 <p style="margin: 4px 0;"><strong>平均成交价：</strong> ${item[3]} 元</p>
                 ${item[4] ? `<p style="margin: 4px 0;"><strong>成交时间：</strong> ${item[4]}</p>` : ''}
@@ -2637,7 +2639,7 @@
           }
         },
         legend: {
-          data: ['平均成交价', '最低成交价', '投放数量', '投标人数'],
+          data: ['平均成交价', '最低成交价', '投放数量', '投标人数', '投标人数/投放数量'],
           bottom: 10,
           left: 'center',
           itemGap: 20,
@@ -2675,6 +2677,15 @@
             type: 'value',
             name: '数量/人数',
             position: 'right',
+            axisLabel: {
+              formatter: '{value}'
+            }
+          },
+          {
+            type: 'value',
+            name: '投标人数/投放数量',
+            position: 'right',
+            offset: 60,
             axisLabel: {
               formatter: '{value}'
             }
@@ -2730,6 +2741,20 @@
             },
             itemStyle: {
               color: '#ee6666'
+            }
+          },
+          {
+            name: '投标人数/投放数量',
+            type: 'line',
+            data: data.map(item => (Number(item[5]) / Number(item[1])).toFixed(2)),
+            yAxisIndex: 2,
+            smooth: true,
+            lineStyle: {
+              width: 2,
+              color: '#73c0de'
+            },
+            itemStyle: {
+              color: '#73c0de'
             }
           }
         ],
